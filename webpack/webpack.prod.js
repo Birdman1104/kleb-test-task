@@ -19,7 +19,6 @@ module.exports = merge(common, {
         },
     },
     plugins: [
-        // disabled by default (uncomment to active)
         new WebpackObfuscator(
             {
                 rotateStringArray: true,
