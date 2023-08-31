@@ -17,7 +17,8 @@
         "phaser",
         "Javascript",
         "Boilerplate",
-        "HTML5 Game"
+        "HTML5 Game",
+        "spritesheet"
     ],
     "dependencies": {
         "phaser": "^3.55.2"

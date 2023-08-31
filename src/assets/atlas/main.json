@@ -1,63 +1,61 @@
 {
-  "frames": {
-    "logo.png": {
-      "frame": {
-        "x": 3,
-        "y": 3,
-        "w": 382,
-        "h": 331
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 382,
-        "h": 331
-      },
-      "sourceSize": {
-        "w": 382,
-        "h": 331
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    },
-    "particle.png": {
-      "frame": {
-        "x": 3,
-        "y": 340,
-        "w": 128,
-        "h": 128
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 128,
-        "h": 128
-      },
-      "sourceSize": {
-        "w": 128,
-        "h": 128
-      },
-      "pivot": {
-        "x": 0.5,
-        "y": 0.5
-      }
-    }
-  },
-  "meta": {
-    "app": "http://github.com/odrick/free-tex-packer-core",
-    "version": "0.3.4",
-    "image": "main.png",
-    "format": "RGBA8888",
-    "size": {
-      "w": 388,
-      "h": 471
-    },
-    "scale": 1
-  }
+	"textures": [
+		{
+			"image": "main.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 388,
+				"h": 471
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "logo.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 382,
+						"h": 331
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 382,
+						"h": 331
+					},
+					"frame": {
+						"x": 3,
+						"y": 3,
+						"w": 382,
+						"h": 331
+					}
+				},
+				{
+					"filename": "particle.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 3,
+						"y": 340,
+						"w": 128,
+						"h": 128
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "http://github.com/odrick/free-tex-packer-core",
+		"version": "0.3.4"
+	}
 }

@@ -51,7 +51,7 @@ const options = {
     base64Export: false,
     packer: "MaxRectsPacker",
     packerMethod: "Smart",
-    exporter: "Pixi",
+    exporter: "Phaser3",
     filter: "none",
 };
 
