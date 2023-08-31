@@ -1,5 +1,4 @@
 import "phaser";
-import "phaser/plugins/spine/dist/SpinePlugin";
 import { Game } from "./game";
 
 const config = {
@@ -24,18 +23,7 @@ const config = {
             gravity: { y: 500 },
         },
     },
-    plugins: {
-        scene: [
-            {
-                key: "SpinePlugin",
-                plugin: window.SpinePlugin,
-                mapping: "spine",
-            },
-        ],
-    },
     antialias: true,
 };
 
-window.addEventListener("load", () => {
-    new Game(config);
-});
+window.addEventListener("load", () => new Game(config));
