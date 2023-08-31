@@ -1,6 +1,13 @@
+import { BackgroundView } from "./BackgroundView";
+import { ForegroundView } from "./ForegroundView";
+import { GameView } from "./GameView";
+import { UIView } from "./UIView";
+
 export class MainView extends Phaser.GameObjects.Container {
-    #logo;
-    #emitter;
+    #backgroundView; // BackgroundView
+    #gameView; // GameView
+    #uiView; // UIView
+    #foregroundView; // ForegroundView
 
     constructor(scene) {
         super(scene);
@@ -8,24 +15,9 @@ export class MainView extends Phaser.GameObjects.Container {
     }
 
     #build() {
-        this.#buildEmitter();
-        this.#buildLogo();
-    }
-
-    #buildLogo() {
-        const logo = this.scene.add.image(900, 700, "logo.png");
-        this.#logo = logo;
-        this.#emitter.startFollow(this.#logo);
-    }
-
-    #buildEmitter() {
-        const particles = this.scene.add.particles("particle.png");
-        const emitter = particles.createEmitter({
-            speed: 100,
-            scale: { start: 1, end: 0 },
-            alpha: { start: 1, end: 0 },
-            blendMode: "ADD",
-        });
-        this.#emitter = emitter;
+        this.add((this.#backgroundView = new BackgroundView(this.scene)));
+        this.add((this.#gameView = new GameView(this.scene)));
+        this.add((this.#uiView = new UIView(this.scene)));
+        this.add((this.#foregroundView = new ForegroundView(this.scene)));
     }
 }
