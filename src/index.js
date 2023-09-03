@@ -9,6 +9,7 @@ const config = {
     type: Phaser.WEBGL,
     width: 1920,
     height: 1080,
+    backgroundColor: 0x27c2a7,
     input: {
         mouse: {
             preventDefaultWheel: false,
