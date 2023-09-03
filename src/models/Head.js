@@ -1,8 +1,8 @@
 import { HeadEvents } from "../events/ModelEvents.js";
 import { GameModel } from "./GameModel.js";
-import ObservableModel from "./ObservableModel.js";
+import Model from "./Model.js";
 
-class HeadModel extends ObservableModel {
+class HeadModel extends Model {
     #gameModel;
 
     constructor() {

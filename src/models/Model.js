@@ -5,15 +5,15 @@ const getUUID = (() => {
 
 class Model {
     _name;
-    #uuid;
+    _uuid;
 
     constructor(name) {
         this._name = name;
-        this.#uuid = getUUID(this._name);
+        this._uuid = getUUID(this._name);
     }
 
     get uuid() {
-        return this.#uuid;
+        return this._uuid;
     }
 
     initialize() {

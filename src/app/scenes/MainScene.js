@@ -1,4 +1,6 @@
 import { Scenes } from "../../config/constants";
+import { MainSceneEvents } from "../../events/ViewEvents";
+import GlobalEmitter from "../../utils/EventEmitter";
 import { MainView } from "../views/MainView";
 
 export class MainScene extends Phaser.Scene {
@@ -7,7 +9,9 @@ export class MainScene extends Phaser.Scene {
     }
 
     create() {
+        GlobalEmitter.mapCommands();
         this.#buildMainView();
+        GlobalEmitter.emit(MainSceneEvents.Ready);
     }
 
     #buildMainView() {
