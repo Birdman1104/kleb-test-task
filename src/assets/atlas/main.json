@@ -4,51 +4,72 @@
 			"image": "main.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 388,
-				"h": 471
+				"w": 1130,
+				"h": 1115
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "logo.png",
+					"filename": "board.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 382,
-						"h": 331
+						"w": 1124,
+						"h": 998
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 382,
-						"h": 331
+						"w": 1124,
+						"h": 998
 					},
 					"frame": {
 						"x": 3,
 						"y": 3,
-						"w": 382,
-						"h": 331
+						"w": 1124,
+						"h": 998
 					}
 				},
 				{
-					"filename": "particle.png",
+					"filename": "score_bar.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 128,
-						"h": 128
+						"w": 377,
+						"h": 105
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 128,
-						"h": 128
+						"w": 377,
+						"h": 105
 					},
 					"frame": {
 						"x": 3,
-						"y": 340,
-						"w": 128,
-						"h": 128
+						"y": 1007,
+						"w": 377,
+						"h": 105
+					}
+				},
+				{
+					"filename": "crystal_yellow.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 96,
+						"h": 103
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 96,
+						"h": 103
+					},
+					"frame": {
+						"x": 386,
+						"y": 1007,
+						"w": 96,
+						"h": 103
 					}
 				}
 			]
