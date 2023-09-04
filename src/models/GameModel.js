@@ -44,9 +44,9 @@ export class GameModel extends Model {
     }
 
     initialize() {
-        this.#score = 0;
-        this.#diamondCount = getDiamondCount();
-        this.#board = new BoardModel();
-        this.#board.initialize(this.#diamondCount);
+        this.score = 0;
+        this.diamondCount = getDiamondCount();
+        this.board = new BoardModel();
+        this.board.initialize(this.diamondCount);
     }
 }

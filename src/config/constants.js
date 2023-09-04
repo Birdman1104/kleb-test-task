@@ -5,5 +5,5 @@ export const Scenes = {
 };
 
 export const COLS = 9;
-export const ROWS = 7;
+export const ROWS = 8;
 export const getDiamondCount = () => Math.floor(Math.random() * 20 + 10);
