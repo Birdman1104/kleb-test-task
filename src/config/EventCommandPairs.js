@@ -24,9 +24,12 @@ const onRightArrowDownCommand = () => {
 
 const onEnterButtonDownCommand = () => {
     const { selectedCell } = Head.gameModel.board;
-    selectedCell.hasDiamond
-        ? Head.gameModel.board.removeSelectedCellDiamond()
-        : GlobalEmitter.emit(ControllerEvents.WrongClick);
+    selectedCell.hasDiamond ? removeDiamondFromCellCommand() : GlobalEmitter.emit(ControllerEvents.WrongClick);
+};
+
+const removeDiamondFromCellCommand = () => {
+    Head.gameModel.board.removeSelectedCellDiamond();
+    Head.gameModel.increaseScore();
 };
 
 export const eventCommandPairs = [

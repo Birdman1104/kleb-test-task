@@ -79,13 +79,13 @@ export class BoardView extends Phaser.GameObjects.Container {
 
     #selectedCellUpdate(newSelectedCell) {
         this.#selectedCell?.hideFrame();
-        this.#selectedCell = this.#getCellByUuid(newSelectedCell.uuid, "selete");
+        this.#selectedCell = this.#getCellByUuid(newSelectedCell.uuid);
         this.#selectedCell.showFrame();
     }
 
     #cellDiamondUpdate(newValue, oldValue, uuid) {
         if (!this.#cells || this.#cells.length === 0) return;
-        const cell = this.#getCellByUuid(uuid, "daimod");
+        const cell = this.#getCellByUuid(uuid);
         if (!newValue) cell.removeDiamond();
     }
 

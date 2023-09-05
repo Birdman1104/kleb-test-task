@@ -43,6 +43,10 @@ export class GameModel extends Model {
         this.#board = value;
     }
 
+    increaseScore() {
+        this.score += 1;
+    }
+
     initialize() {
         this.score = 0;
         this.diamondCount = getDiamondCount();
