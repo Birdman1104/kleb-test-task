@@ -1,16 +1,27 @@
-import { getDiamondCount } from "../config/constants.js";
+import { GameState, getDiamondCount } from "../config/constants.js";
 import { GameModelEvents } from "../events/ModelEvents.js";
 import GlobalEmitter from "../utils/EventEmitter";
 import { BoardModel } from "./BoardModel.js";
 import Model from "./Model.js";
 
 export class GameModel extends Model {
+    #state = GameState.Unknown;
     #board; // BoardModel
     #score; // number
     #diamondCount; // number
 
     constructor() {
         super("GameModel");
+    }
+
+    get state() {
+        return this.#state;
+    }
+
+    set state(value) {
+        if (value === this.#state) return;
+        GlobalEmitter.emit(GameModelEvents.StateUpdate, value, this.#state, this.uuid);
+        this.#state = value;
     }
 
     get diamondCount() {
@@ -45,6 +56,9 @@ export class GameModel extends Model {
 
     increaseScore() {
         this.score += 1;
+        if (this.score === this.diamondCount) {
+            this.state = GameState.Win;
+        }
     }
 
     initialize() {

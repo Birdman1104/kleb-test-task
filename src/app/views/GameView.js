@@ -8,14 +8,14 @@ export class GameView extends Phaser.GameObjects.Container {
     constructor(scene) {
         super(scene);
         this.#build();
-        GlobalEmitter.on(GameModelEvents.BoardUpdate, this.#boardUpdate, this);
+        GlobalEmitter.on(GameModelEvents.BoardUpdate, this.#onBoardUpdate, this);
     }
 
     #build() {
         //
     }
 
-    #boardUpdate(newValue, oldValue) {
+    #onBoardUpdate(newValue, oldValue) {
         if (newValue && !oldValue) this.#buildBoard();
     }
 

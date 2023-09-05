@@ -6,6 +6,7 @@ export const BoardModelEvents = {
 export const CellModelEvents = { HasDiamondUpdate: "CellModelHasDiamondUpdate" };
 
 export const GameModelEvents = {
+    StateUpdate: "GameModelStateUpdate",
     DiamondCountUpdate: "GameModelDiamondCountUpdate",
     ScoreUpdate: "GameModelScoreUpdate",
     BoardUpdate: "GameModelBoardUpdate",

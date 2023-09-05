@@ -6,8 +6,6 @@ export class CellView extends Phaser.GameObjects.Container {
     #diamond; // image | null
     #hasDiamond; // boolean
     #uuid; // string
-    #i; // number
-    #j; // number
     #w; // number
     #h; // number
 
@@ -15,8 +13,6 @@ export class CellView extends Phaser.GameObjects.Container {
         super(scene);
         this.#hasDiamond = config.hasDiamond;
         this.#uuid = config.uuid;
-        this.#i = config.i;
-        this.#j = config.j;
         this.#w = config.width;
         this.#h = config.height;
 
@@ -36,7 +32,20 @@ export class CellView extends Phaser.GameObjects.Container {
     }
 
     removeDiamond() {
-        this.#diamond.destroy();
+        this.#hasDiamond = false;
+        const scaleDown = this.scene.tweens.add({
+            targets: this.#diamond,
+            scale: { value: 0 },
+            duration: 100,
+            paused: true,
+            onComplete: () => this.#diamond.destroy(),
+        });
+        this.scene.tweens.add({
+            targets: this.#diamond,
+            scale: { value: 1.3 },
+            duration: 100,
+            onComplete: () => scaleDown.play(),
+        });
     }
 
     #build() {

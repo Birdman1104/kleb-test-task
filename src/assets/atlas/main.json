@@ -4,8 +4,8 @@
 			"image": "main.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1130,
-				"h": 1115
+				"w": 1513,
+				"h": 1622
 			},
 			"scale": 1,
 			"frames": [
@@ -31,6 +31,27 @@
 					}
 				},
 				{
+					"filename": "popup.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 800,
+						"h": 617
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 5,
+						"w": 800,
+						"h": 612
+					},
+					"frame": {
+						"x": 3,
+						"y": 1007,
+						"w": 800,
+						"h": 612
+					}
+				},
+				{
 					"filename": "score_bar.png",
 					"rotated": false,
 					"trimmed": false,
@@ -45,10 +66,31 @@
 						"h": 105
 					},
 					"frame": {
-						"x": 3,
-						"y": 1007,
+						"x": 1133,
+						"y": 3,
 						"w": 377,
 						"h": 105
+					}
+				},
+				{
+					"filename": "play_round_btn.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 256,
+						"h": 256
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 256,
+						"h": 256
+					},
+					"frame": {
+						"x": 1133,
+						"y": 114,
+						"w": 256,
+						"h": 256
 					}
 				},
 				{
@@ -66,8 +108,8 @@
 						"h": 103
 					},
 					"frame": {
-						"x": 386,
-						"y": 1007,
+						"x": 1395,
+						"y": 114,
 						"w": 96,
 						"h": 103
 					}

@@ -6,6 +6,10 @@ export const ControllerEvents = {
     WrongClick: "ControllerEventsWrongClick",
 };
 
+export const WinPopupEvents = {
+    PlayButtonClick: "WinPopupEventsPlayButtonClick",
+};
+
 export const BoardViewEvents = {
     UpArrowDown: "BoardViewEventsUpArrowDown",
     DownArrowDown: "BoardViewEventsDownArrowDown",

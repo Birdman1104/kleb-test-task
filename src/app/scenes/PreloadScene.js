@@ -34,7 +34,7 @@ export class PreloadScene extends Phaser.Scene {
 
     #loadAudio() {
         if (audioAssets.length === 0) return;
-        audioAssets.forEach(({ name, path }) => this.load.audio(name, path));
+        audioAssets.forEach(({ name, path }) => this.load.audio(name, `src/${path}`));
     }
 
     #onFileLoadComplete(progress) {
