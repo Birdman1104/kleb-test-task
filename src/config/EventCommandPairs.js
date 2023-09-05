@@ -1,5 +1,6 @@
-import { BoardViewEvents, MainSceneEvents } from "../events/ViewEvents";
+import { BoardViewEvents, ControllerEvents, MainSceneEvents } from "../events/ViewEvents";
 import { Head } from "../models/Head";
+import GlobalEmitter from "../utils/EventEmitter";
 
 const mainSceneReadyCommand = () => {
     Head.initialize();
@@ -19,6 +20,13 @@ const onLeftArrowDownCommand = () => {
 
 const onRightArrowDownCommand = () => {
     Head.gameModel.board.moveSelectionRight();
+};
+
+const onEnterButtonDownCommand = () => {
+    const { selectedCell } = Head.gameModel.board;
+    selectedCell.hasDiamond
+        ? Head.gameModel.board.removeSelectedCellDiamond()
+        : GlobalEmitter.emit(ControllerEvents.WrongClick);
 };
 
 export const eventCommandPairs = [
@@ -41,5 +49,9 @@ export const eventCommandPairs = [
     {
         event: BoardViewEvents.RightArrowDown,
         command: onRightArrowDownCommand,
+    },
+    {
+        event: BoardViewEvents.EnterButtonDown,
+        command: onEnterButtonDownCommand,
     },
 ];

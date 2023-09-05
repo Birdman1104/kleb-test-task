@@ -94,6 +94,10 @@ export class BoardModel extends Model {
         this.selectedCell = this.#cells[i][j];
     }
 
+    removeSelectedCellDiamond() {
+        this.#selectedCell.removeDiamond();
+    }
+
     #initCells(diamondCount) {
         const arr = getEmpty2DArray(COLS, ROWS);
 

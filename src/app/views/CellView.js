@@ -35,6 +35,10 @@ export class CellView extends Phaser.GameObjects.Container {
         this.#frame.alpha = 0;
     }
 
+    removeDiamond() {
+        this.#diamond.destroy();
+    }
+
     #build() {
         if (this.#hasDiamond) this.#buildDiamond();
         this.#buildFrame();

@@ -32,6 +32,10 @@ export class CellModel extends Model {
         this.#hasDiamond = value;
     }
 
+    removeDiamond() {
+        this.hasDiamond = false;
+    }
+
     initialize() {
         //
     }

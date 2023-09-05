@@ -1,5 +1,5 @@
 import { COLS, ROWS } from "../../config/constants";
-import { BoardModelEvents } from "../../events/ModelEvents";
+import { BoardModelEvents, CellModelEvents } from "../../events/ModelEvents";
 import { BoardViewEvents } from "../../events/ViewEvents";
 import GlobalEmitter from "../../utils/EventEmitter";
 import { getEmpty2DArray } from "../../utils/utils";
@@ -17,6 +17,7 @@ export class BoardView extends Phaser.GameObjects.Container {
         this.#build();
         GlobalEmitter.on(BoardModelEvents.CellsUpdate, this.#cellsUpdate, this);
         GlobalEmitter.on(BoardModelEvents.SelectedCellUpdate, this.#selectedCellUpdate, this);
+        GlobalEmitter.on(CellModelEvents.HasDiamondUpdate, this.#cellDiamondUpdate, this);
     }
 
     #build() {
@@ -78,8 +79,14 @@ export class BoardView extends Phaser.GameObjects.Container {
 
     #selectedCellUpdate(newSelectedCell) {
         this.#selectedCell?.hideFrame();
-        this.#selectedCell = this.#getCellByUuid(newSelectedCell.uuid);
+        this.#selectedCell = this.#getCellByUuid(newSelectedCell.uuid, "selete");
         this.#selectedCell.showFrame();
+    }
+
+    #cellDiamondUpdate(newValue, oldValue, uuid) {
+        if (!this.#cells || this.#cells.length === 0) return;
+        const cell = this.#getCellByUuid(uuid, "daimod");
+        if (!newValue) cell.removeDiamond();
     }
 
     #getCellByUuid(uuid) {
