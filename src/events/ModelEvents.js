@@ -1,4 +1,7 @@
-export const BoardModelEvents = { CellsUpdate: "BoardModelCellsUpdate" };
+export const BoardModelEvents = {
+    CellsUpdate: "BoardModelCellsUpdate",
+    SelectedCellUpdate: "BoardModelSelectedCellUpdate",
+};
 
 export const CellModelEvents = { HasDiamondUpdate: "CellModelHasDiamondUpdate" };
 

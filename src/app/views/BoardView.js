@@ -1,11 +1,13 @@
 import { COLS, ROWS } from "../../config/constants";
 import { BoardModelEvents } from "../../events/ModelEvents";
+import { BoardViewEvents } from "../../events/ViewEvents";
 import GlobalEmitter from "../../utils/EventEmitter";
 import { getEmpty2DArray } from "../../utils/utils";
 import { CellView } from "./CellView";
 
 export class BoardView extends Phaser.GameObjects.Container {
     #cells; // CellView[][]
+    #selectedCell; // CellView
     #boardImage; // Sprite
     #cellWidth; // number
     #cellHeight; // number
@@ -14,10 +16,12 @@ export class BoardView extends Phaser.GameObjects.Container {
         super(scene);
         this.#build();
         GlobalEmitter.on(BoardModelEvents.CellsUpdate, this.#cellsUpdate, this);
+        GlobalEmitter.on(BoardModelEvents.SelectedCellUpdate, this.#selectedCellUpdate, this);
     }
 
     #build() {
         this.#buildBoardImage();
+        this.#setInputHandlers();
     }
 
     #buildBoardImage() {
@@ -29,7 +33,6 @@ export class BoardView extends Phaser.GameObjects.Container {
         this.#cellWidth = Math.ceil(iw / COLS);
         this.add(gr);
         this.add(this.#boardImage);
-        console.warn(this.#cellHeight, this.#cellWidth);
     }
 
     #cellsUpdate(newValue, oldValue) {
@@ -57,5 +60,33 @@ export class BoardView extends Phaser.GameObjects.Container {
         }
 
         this.#cells = arr;
+    }
+
+    #setInputHandlers() {
+        const upArrow = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
+        const downArrow = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
+        const leftArrow = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+        const rightArrow = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+        const enterButton = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+
+        upArrow.on("down", () => GlobalEmitter.emit(BoardViewEvents.UpArrowDown));
+        downArrow.on("down", () => GlobalEmitter.emit(BoardViewEvents.DownArrowDown));
+        leftArrow.on("down", () => GlobalEmitter.emit(BoardViewEvents.LeftArrowDown));
+        rightArrow.on("down", () => GlobalEmitter.emit(BoardViewEvents.RightArrowDown));
+        enterButton.on("down", () => GlobalEmitter.emit(BoardViewEvents.EnterButtonDown));
+    }
+
+    #selectedCellUpdate(newSelectedCell) {
+        this.#selectedCell?.hideFrame();
+        this.#selectedCell = this.#getCellByUuid(newSelectedCell.uuid);
+        this.#selectedCell.showFrame();
+    }
+
+    #getCellByUuid(uuid) {
+        for (let i = 0; i < this.#cells.length; i++) {
+            for (let j = 0; j < this.#cells[i].length; j++) {
+                if (this.#cells[i][j].uuid === uuid) return this.#cells[i][j];
+            }
+        }
     }
 }

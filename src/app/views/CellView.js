@@ -13,8 +13,6 @@ export class CellView extends Phaser.GameObjects.Container {
 
     constructor(scene, config) {
         super(scene);
-        console.warn(config);
-
         this.#hasDiamond = config.hasDiamond;
         this.#uuid = config.uuid;
         this.#i = config.i;
@@ -23,6 +21,18 @@ export class CellView extends Phaser.GameObjects.Container {
         this.#h = config.height;
 
         this.#build(config);
+    }
+
+    get uuid() {
+        return this.#uuid;
+    }
+
+    showFrame() {
+        this.#frame.alpha = 1;
+    }
+
+    hideFrame() {
+        this.#frame.alpha = 0;
     }
 
     #build() {
@@ -38,6 +48,7 @@ export class CellView extends Phaser.GameObjects.Container {
     #buildFrame() {
         this.#generateRectangle();
         this.#frame = this.scene.add.image(this.#w / 2, this.#h / 2, "frame");
+        this.#frame.alpha = 0;
         this.add(this.#frame);
     }
 
