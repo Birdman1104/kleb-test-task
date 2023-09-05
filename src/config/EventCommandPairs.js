@@ -1,4 +1,4 @@
-import { BoardViewEvents, ControllerEvents, MainSceneEvents } from "../events/ViewEvents";
+import { ControllerEvents, GameViewEvents, MainSceneEvents, WinPopupEvents } from "../events/ViewEvents";
 import { Head } from "../models/Head";
 import GlobalEmitter from "../utils/EventEmitter";
 
@@ -32,29 +32,37 @@ const removeDiamondFromCellCommand = () => {
     Head.gameModel.increaseScore();
 };
 
+const onPlayButtonClickCommand = () => {
+    Head.gameModel.restart();
+};
+
 export const eventCommandPairs = [
     {
         event: MainSceneEvents.Ready,
         command: mainSceneReadyCommand,
     },
     {
-        event: BoardViewEvents.UpArrowDown,
+        event: GameViewEvents.UpArrowDown,
         command: onUpArrowDownCommand,
     },
     {
-        event: BoardViewEvents.DownArrowDown,
+        event: GameViewEvents.DownArrowDown,
         command: onDownArrowDownCommand,
     },
     {
-        event: BoardViewEvents.LeftArrowDown,
+        event: GameViewEvents.LeftArrowDown,
         command: onLeftArrowDownCommand,
     },
     {
-        event: BoardViewEvents.RightArrowDown,
+        event: GameViewEvents.RightArrowDown,
         command: onRightArrowDownCommand,
     },
     {
-        event: BoardViewEvents.EnterButtonDown,
+        event: GameViewEvents.EnterButtonDown,
         command: onEnterButtonDownCommand,
+    },
+    {
+        event: WinPopupEvents.PlayButtonClick,
+        command: onPlayButtonClickCommand,
     },
 ];

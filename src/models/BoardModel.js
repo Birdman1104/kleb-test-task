@@ -33,6 +33,17 @@ export class BoardModel extends Model {
         this.#selectedCell = value;
     }
 
+    destroy() {
+        for (let i = 0; i < this.#cells.length; i++) {
+            for (let j = 0; j < this.#cells[i].length; j++) {
+                this.#cells[i][j].destroy();
+            }
+        }
+        this.#cells = null;
+        this.#selectedCell = null;
+        super.destroy();
+    }
+
     initialize(diamondCount) {
         this.#initCells(diamondCount);
         this.#setSelectedCell();

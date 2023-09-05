@@ -62,9 +62,16 @@ export class GameModel extends Model {
     }
 
     initialize() {
+        this.state = GameState.Game;
         this.score = 0;
         this.diamondCount = getDiamondCount();
         this.board = new BoardModel();
         this.board.initialize(this.diamondCount);
+    }
+
+    restart() {
+        this.#board.destroy();
+        this.#board = null;
+        this.initialize();
     }
 }

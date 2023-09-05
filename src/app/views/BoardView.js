@@ -1,6 +1,5 @@
 import { COLS, ROWS } from "../../config/constants";
 import { BoardModelEvents, CellModelEvents } from "../../events/ModelEvents";
-import { BoardViewEvents } from "../../events/ViewEvents";
 import GlobalEmitter from "../../utils/EventEmitter";
 import { getEmpty2DArray } from "../../utils/utils";
 import { CellView } from "./CellView";
@@ -20,9 +19,22 @@ export class BoardView extends Phaser.GameObjects.Container {
         GlobalEmitter.on(CellModelEvents.HasDiamondUpdate, this.#cellDiamondUpdate, this);
     }
 
+    destroy() {
+        GlobalEmitter.off(BoardModelEvents.CellsUpdate, this.#cellsUpdate, this);
+        GlobalEmitter.off(BoardModelEvents.SelectedCellUpdate, this.#selectedCellUpdate, this);
+        GlobalEmitter.off(CellModelEvents.HasDiamondUpdate, this.#cellDiamondUpdate, this);
+
+        for (let i = 0; i < this.#cells.length; i++) {
+            for (let j = 0; j < this.#cells[i].length; j++) {
+                this.#cells[i][j].destroy();
+            }
+        }
+
+        super.destroy();
+    }
+
     #build() {
         this.#buildBoardImage();
-        this.#setInputHandlers();
     }
 
     #buildBoardImage() {
@@ -61,20 +73,6 @@ export class BoardView extends Phaser.GameObjects.Container {
         }
 
         this.#cells = arr;
-    }
-
-    #setInputHandlers() {
-        const upArrow = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
-        const downArrow = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
-        const leftArrow = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
-        const rightArrow = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
-        const enterButton = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
-
-        upArrow.on("down", () => GlobalEmitter.emit(BoardViewEvents.UpArrowDown));
-        downArrow.on("down", () => GlobalEmitter.emit(BoardViewEvents.DownArrowDown));
-        leftArrow.on("down", () => GlobalEmitter.emit(BoardViewEvents.LeftArrowDown));
-        rightArrow.on("down", () => GlobalEmitter.emit(BoardViewEvents.RightArrowDown));
-        enterButton.on("down", () => GlobalEmitter.emit(BoardViewEvents.EnterButtonDown));
     }
 
     #selectedCellUpdate(newSelectedCell) {

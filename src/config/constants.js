@@ -6,14 +6,12 @@ export const Scenes = {
 
 export const GameState = {
     Unknown: "unknown",
-    Boot: "boot",
     Game: "game",
     Win: "win",
 };
 
 export const COLS = 9;
 export const ROWS = 8;
-export const getDiamondCount = () => 1;
-// export const getDiamondCount = () => Math.floor(Math.random() * 20 + 10);
+export const getDiamondCount = () => Math.floor(Math.random() * 20 + 10);
 
 export const POPUP_SHOW_DURATION = 200;

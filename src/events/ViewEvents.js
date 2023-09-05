@@ -10,10 +10,10 @@ export const WinPopupEvents = {
     PlayButtonClick: "WinPopupEventsPlayButtonClick",
 };
 
-export const BoardViewEvents = {
-    UpArrowDown: "BoardViewEventsUpArrowDown",
-    DownArrowDown: "BoardViewEventsDownArrowDown",
-    LeftArrowDown: "BoardViewEventsLeftArrowDown",
-    RightArrowDown: "BoardViewEventsRightArrowDown",
-    EnterButtonDown: "BoardViewEventsEnterButtonDown",
+export const GameViewEvents = {
+    UpArrowDown: "GameViewEventsUpArrowDown",
+    DownArrowDown: "GameViewEventsDownArrowDown",
+    LeftArrowDown: "GameViewEventsLeftArrowDown",
+    RightArrowDown: "GameViewEventsRightArrowDown",
+    EnterButtonDown: "GameViewEventsEnterButtonDown",
 };

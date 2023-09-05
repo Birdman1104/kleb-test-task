@@ -55,6 +55,10 @@ export class ForegroundView extends Phaser.GameObjects.Container {
                     this.#winPopup.show();
                 });
                 break;
+            case GameState.Game:
+                this.#hideBlocker();
+                this.#winPopup.hide();
+                break;
 
             default:
                 break;
