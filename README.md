@@ -1,7 +1,10 @@
-# Phaser3 JS Boilerplate by [Birdman](https://birdman1104.github.io)
+# Mini Game Test Task for Klebo Games
 
 ## About
-This is a Phaser3 Javascript Boilerplate, made with Webpack 5
+
+Данное тестовое задание передано мне исключительно для оценки
+моих знаний и навыков;
+This test task was given to me exclusively for testing my knowledge and skills.
 
 ## Usage
 

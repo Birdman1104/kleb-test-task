@@ -36,7 +36,7 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            gameName: "Phaser3 Boilerplate by Birdman",
+            gameName: "Klebo Games Test Task",
             template: "./index.html",
             filename: "index.html",
         }),
