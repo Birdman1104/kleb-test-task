@@ -1,3 +1,4 @@
+import { SoundController } from "../../utils/SoundController";
 import { BackgroundView } from "./BackgroundView";
 import { ForegroundView } from "./ForegroundView";
 import { GameView } from "./GameView";
@@ -8,6 +9,7 @@ export class MainView extends Phaser.GameObjects.Container {
     #gameView; // GameView
     #uiView; // UIView
     #foregroundView; // ForegroundView
+    #soundController; // SoundController
 
     constructor(scene) {
         super(scene);
@@ -19,5 +21,6 @@ export class MainView extends Phaser.GameObjects.Container {
         this.add((this.#gameView = new GameView(this.scene)));
         this.add((this.#uiView = new UIView(this.scene)));
         this.add((this.#foregroundView = new ForegroundView(this.scene)));
+        this.add((this.#soundController = new SoundController(this.scene)));
     }
 }
