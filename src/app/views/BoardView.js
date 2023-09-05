@@ -25,8 +25,8 @@ export class BoardView extends Phaser.GameObjects.Container {
         this.#boardImage = this.scene.add.image(w / 2, h / 2, "main", "board.png");
         const { width: iw, height: ih } = this.#boardImage;
         const gr = this.scene.add.rectangle(w / 2, h / 2, iw, ih, 0xa87327);
-        this.#cellHeight = ih / ROWS;
-        this.#cellWidth = iw / COLS;
+        this.#cellHeight = Math.ceil(ih / ROWS);
+        this.#cellWidth = Math.ceil(iw / COLS);
         this.add(gr);
         this.add(this.#boardImage);
         console.warn(this.#cellHeight, this.#cellWidth);
