@@ -25,7 +25,6 @@ export class SoundController extends Phaser.GameObjects.Container {
     }
 
     #diamondUpdate(hasDiamond) {
-        console.warn(this.#effect);
         if (!hasDiamond) this.#effect.play();
     }
 
